@@ -1,0 +1,97 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.demoContainer {
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.demoSectionWrapepr {
+    display: inline-block;
+    width: 98%;
+}
+
+.demoResponseList {
+    background-color: lightgrey;
+    margin: 0;
+    padding-right: 5px;
+    overflow-y: scroll;
+    height: calc(100% - 3px * 2 * 12);
+}
+
+.demoResponseList li {
+    list-style-type: decimal;
+    padding: 3px 0;
+    word-wrap: break-word;
+}
+
+.demoResponseList li + li {
+    border-top: 1px solid black; 
+}
+
+.chart-card{
+    border: 1px solid #ccc;
+    box-shadow: 5px 5px 2px #888888;
+    margin-bottom: 20px;
+
+
+}
+
+.chartStats
+{
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+.stat-header
+{
+	padding: 15px;
+}
+.stat-content
+{
+	
+	border: 1px solid #ccc;
+	box-shadow: 2px 2px 1px #888888;
+	height: 150px;
+	background-color: #C8C8C8 ;
+}
+
+.stat-icon
+{
+	font-size:60px;
+	line-height: 150px;
+	opacity: 0.6;
+	float: left;
+}
+
+#wrapper {
+   padding-left: 70px;
+   transition: all .4s ease 0s;
+   height: 100%
+}
+
+#sidebar-wrapper {
+   margin-left: 150px;
+   left: 70px;
+   width: 150px;
+   background: #222;
+   position: fixed;
+   height: 100%;
+   z-index: 10000;
+   
+}
+
+.sidebar-nav {
+   display: block;
+   float: left;
+   width: 150px;
+   list-style: none;
+   margin: 0;
+   padding: 0;
+}
+
+

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en" ng-app="networkSniffer">
+
+<head>
+	<meta charset="utf-8">
+	<meta  name="viewport" content="width=device-width, initial-scale=1">
+	<title>Contrail-Challenge</title>
+	<link rel="stylesheet" type="text/css" href="css/style-index.css">
+     
+    <!--CSS-->
+    <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="css/footer.css" id="css">
+    <link rel="stylesheet" href="css/boot.css">
+    
+
+    <!--jQuery-->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    
+
+    <!--Vendors-->
+ 	 <script src="js/vendors/angular.js"></script>
+    <script src="js/vendors/angular-route.js"></script>
+    <!--<script src="js/vendors/angular-resource.js"></script>-->
+    <script src="js/config.js"></script>
+    <script src="js/vendors/jquery.mockjax.min.js"></script>
+
+    <!--Lodash-->
+    <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
+
+    <script src="js/controllers/plotCtrl.js"></script>
+
+    <!--D3-->
+    <script src="http://d3js.org/d3.v3.js"></script>
+    <script src="http://cpettitt.github.io/project/dagre-d3/latest/dagre-d3.js"></script>
+
+     <!--BootStrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    
+    <script src="js/app.js"></script>
+    
+</head>
+
+<body>
+	
+    <div class="head">
+      <img  src="img/juniper-networks-white.png">
+    </div>
+
+
+
+	<div class="main">
+	<div class="left">
+	    <div class="link"><a href="#/traffic_stats">Node View</a></div>
+	    <div class="link"><a href="#/network_stats">Network View</a></div>
+        <div class="link"><a href="#/highest_stats">Summary</a></div>
+    </div>
+     <div class="right">
+         
+        <ng-view></ng-view>
+     </div> 
+   </div>  
+
+        <h2 class="demoSectionHeading" ng-hide="true">Traffic Stat for {{selectedServerName}}</h2>
+
+        <ul id="mockTrafficStat" class="demoResponseList">
+        </ul>
+
+
+    
+    
+   <script src="js/mockAPIs.js"></script>
+
+
+</body>
+</html>
+

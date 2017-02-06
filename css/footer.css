@@ -1,0 +1,47 @@
+h1 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serf;
+    margin-top: 0.8em;
+    margin-bottom: 0.2em;
+}
+
+text {
+    font-weight: 300;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serf;
+    font-size: 14px;
+}
+
+.node rect {
+    stroke: #333;
+    fill: #fff;
+    stroke-width: 1.5px;
+}
+
+.node polygon {
+    stroke: #333;
+    fill: #fff;
+    stroke-width: 1.5px;
+}
+
+.edgePath path.path {
+    stroke: #333;
+    fill: none;
+    stroke-width: 1.5px;
+}
+
+div#top-frame {
+    height: 350px;
+}
+
+div#WBS-frame {
+    float: left;
+    width: 50%;
+}
+
+div#dependencies-frame {
+    float: left;
+    width: 50%;
+}
+
+div#schedule-frame {
+    height: 350px;
+}

@@ -1,0 +1,125 @@
+<div class="chart-card col-md-12" ng-show="showIndividualDetails">
+
+
+<div class="col-md-4 gutter-fix" >
+                    <div class="row">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{(serverOutboundPacket/totalPacket)*1000}}%">
+                               Outbound Packets {{(serverOutboundPacket/totalPacket)*100 | number:2}}% of total 
+                            </div>
+                        </div>
+
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{(serverInboundPacket/totalPacket)*1000}}%">
+                               Inbound Packets {{(serverInboundPacket/totalPacket)*100 | number:2}}% of total  
+                            </div>
+                        </div>
+
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:{{(serverOutboundTraffic/totalTraffic)*1000}}%">
+                                Oubound Traffic {{(serverOutboundTraffic/totalTraffic)*100 | number:2}}% of total
+                            </div>
+                        </div>
+
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:{{(serverInboundTraffic/totalTraffic)*1000}}%">
+                                Inbound Traffic {{(serverInboundTraffic/totalTraffic)*100 | number:2}}% of total
+                            </div>
+                        </div>
+
+                        
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:{{serverOutboundConnections.length*9}}%">
+                                Outbound Connections Established {{serverOutboundConnections.length}} nodes : {{serverOutboundConnections}}
+                            </div>
+                        </div>
+
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:{{serverInboundConnections.length*9}}%">
+                                Inbound Connections Established {{serverInboundConnections.length}} nodes : {{serverInboundConnections}}
+                            </div>
+                        </div>
+
+                        <!--<svg class="chart" data-bar-chart data-data={{serverOutboundPacketString}} data-bar-width="15"></svg>
+                        {{serverOutboundPacketString}}-->
+                                           
+                    </div>                  
+                </div>
+
+
+
+</div>
+
+<div class="container-fluid">
+                     
+        <div class="content">
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <h3><b style="color:#008000">DIRECTED GRAPH FOR INDIVIDUAL NODE</b></h3>
+
+                </div>
+                
+                
+                      
+                        <div>
+                        Selected Server<select ng-model="selectedServerName" data-ng-options="server for server in sourceServerList" ng-change="generateGraph(selectedServerName)">
+                        <option value="">Select Server to analyze</option>
+                        </select>
+
+                        </div>
+                
+             </div>
+
+            <div class="row">
+                <div class="col-md-4 gutter-fix">
+                    <div class="row">
+
+
+                        <div id="top-frame">
+                            <div id="schedule-frame" width="100%" height="100%">
+
+                                <svg id="schedule" width="100%" height="100%" viewBox="0 0 1024 720" preserveAspectRatio="none"></svg>
+                            </div>
+                        </div>
+                    </div>            
+
+                    
+                </div>
+
+                
+             </div>              
+         </div>
+    </div>
+
+<script>
+  $('[data-bar-chart]').each(function (i, svg) {
+    var $svg = $(svg);
+    var data = $svg.data('data').split(',').map(function (datum) {
+      return parseFloat(datum);
+    });
+
+    var barWidth = parseFloat($svg.data('bar-width')) || 15;
+    var barSpace = parseFloat($svg.data('bar-space')) || 0.5;
+    var chartHeight = $svg.outerHeight();
+
+    var y = d3.scale.linear()
+              .domain([0, d3.max(data)])
+              .range([0, chartHeight]);
+
+    d3.select(svg)
+      .selectAll("rect")
+        .data(data)
+      .enter().append("rect")
+        .attr("class", "bar")
+        .attr("width", barWidth)
+        .attr("x", function (d, i) { return barWidth*i + barSpace*i; })
+        .attr("y", chartHeight)
+        .attr("height", 0)
+        .transition()
+        .delay(function (d, i) { return i*100; })
+        .attr("y", function (d, i) { return chartHeight-y(d); })
+        .attr("height", function (d) { return y(d); });
+  });
+
+</script>
